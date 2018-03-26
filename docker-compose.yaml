@@ -6,6 +6,8 @@ ergastdb:
     MYSQL_DATABASE: ergastdb
   expose:
     - "3306"
+  ports:
+    - "3399:3306"
 
 ## Link an RStudio container to the ergastdb database server 
 #f1dj_rstudio:
