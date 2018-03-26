@@ -21,6 +21,7 @@ ergastdb:
 ## Test the connection using:
 ##library(RMySQL)
 ##con=dbConnect(MySQL(),user='root',password='f1',host='ergastdb',port=3306,dbname='ergastdb')
+#For localhost: con=dbConnect(MySQL(),user='root',password='f1',host='127.0.0.1',port=3399,dbname='ergastdb')
 ## dbListTables(con)  
 
 web:
