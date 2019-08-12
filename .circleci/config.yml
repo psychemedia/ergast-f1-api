@@ -7,13 +7,13 @@ jobs:
       - checkout
       - run:
           command: |
-            #cp f1db.sql.gz f1db-old.sql.gz
+            cp ergastdb/data/f1db.sql.gz ergastdb/data/f1db-old.sql.gz
             curl -o f1db.sql.gz "http://ergast.com/downloads/f1db.sql.gz"
-            git add f1db.sql.gz
+            git add ergastdb/data/f1db.sql.gz
             git config --global user.email "ergastbot@example.com"
             git config --global user.name "ergastbot"
             git commit -m "Daily update..." && \
-              git push -q https://${GITHUB_PERSONAL_TOKEN}github.com/psychemedia/ergast-f1-api.git master \
+              git push -q https://${GITHUB_PERSONAL_TOKEN}@github.com/psychemedia/ergast-f1-api.git master \
               || true
 workflows:
   version: 2
