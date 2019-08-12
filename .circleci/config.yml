@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           command: |
-            cp f1db.sql.gz f1db-old.sql.gz
+            #cp f1db.sql.gz f1db-old.sql.gz
             curl -o f1db.sql.gz "http://ergast.com/downloads/f1db.sql.gz"
             git add f1db.sql.gz
             git config --global user.email "ergastbot@example.com"
