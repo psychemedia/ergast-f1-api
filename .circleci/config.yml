@@ -8,7 +8,7 @@ jobs:
       - run:
           command: |
             cp ergastdb/data/f1db.sql.gz ergastdb/data/f1db-old.sql.gz
-            curl -o f1db.sql.gz "http://ergast.com/downloads/f1db.sql.gz"
+            curl -o ergastdb/data/f1db.sql.gz "http://ergast.com/downloads/f1db.sql.gz"
             git add ergastdb/data/f1db.sql.gz
             git config --global user.email "ergastbot@example.com"
             git config --global user.name "ergastbot"
