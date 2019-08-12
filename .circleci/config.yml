@@ -1,0 +1,32 @@
+version: 2
+jobs:
+  fetch_and_commit:
+    docker:
+      - image: circleci/python:3.6.4
+    steps:
+      - checkout
+      - run:
+          command: |
+            cp ergastdb/data/f1db.sql.gz ergastdb/data/f1db-old.sql.gz
+            curl -o ergastdb/data/f1db.sql.gz "http://ergast.com/downloads/f1db.sql.gz"
+            git add ergastdb/data/f1db.sql.gz
+            git config --global user.email "ergastbot@example.com"
+            git config --global user.name "ergastbot"
+            git commit -m "Daily update..." && \
+              git push -q https://${GITHUB_PERSONAL_TOKEN}github.com/psychemedia/ergast-f1-api.git master \
+              || true
+workflows:
+  version: 2
+  build:
+    jobs:
+      - fetch_and_commit
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - fetch_and_commit
